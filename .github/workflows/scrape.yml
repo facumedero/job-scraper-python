@@ -1,8 +1,9 @@
+---
 name: Run Job Scraper
-on:
+"on":
   schedule:
-    - cron: "0 9 * * *"  # todos los días a las 9am UTC
-  workflow_dispatch: {}   # también permite correrlo manualmente desde GitHub
+    - cron: "0 9 * * *"
+  workflow_dispatch: {}
 jobs:
   scrape:
     runs-on: ubuntu-latest
