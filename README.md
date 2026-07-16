@@ -19,7 +19,7 @@ Scraper de ofertas de empleo en Python que utiliza [JobSpy](https://github.com/s
 
 ### Para correr el scraper (solo dependencias de producción)
 
-\`\`\`bash
+```bash
 
 ### Crear y activar entorno virtual
 
@@ -28,33 +28,34 @@ venv\Scripts\activate   # Windows
 venv/bin/activate   # Linux/Mac
 
 pip install -r requirements.txt
-\`\`\`
+```
 
 ### Para desarrollar (incluye tests, linter y pre-commit)
 
-\`\`\`bash
+```bash
 pip install -r requirements-dev.txt
 pre-commit install
-\`\`\`
+```
 
 El comando `pre-commit install` activa un hook que corre automáticamente `ruff` (lint + formato) en cada `git commit`, evitando subir código con errores que después fallarían en el CI.
 
 Para correrlo manualmente sobre todo el proyecto:
-\`\`\`bash
+
+```bash
 pre-commit run --all-files
-\`\`\`
+```
 
 ## Uso
 
-\`\`\`bash
+```bash
 python main.py
-\`\`\`
+```
 
 Editá las variables `searches`, `sites`, `results`, `old` y `country` en `main.py` según tus necesidades de búsqueda.
 
 ## Estructura del proyecto
 
-\`\`\`
+```bash
 job-scraper-python/
 ├── .github/
 │   └── workflows/
@@ -74,14 +75,15 @@ job-scraper-python/
 ├── jobs.db
 ├── jobs.csv
 └── README.md
-\`\`\`
+```
 
 ## Actualizar dependencias
 
 **Producción (`requirements.txt`):**
-\`\`\`bash
+
+```bash
 pip freeze > requirements.txt
-\`\`\`
+```
 
 **Desarrollo (`requirements-dev.txt`):** se edita a mano, ya que referencia `requirements.txt` con `-r requirements.txt` y agrega herramientas de dev (`pytest`, `ruff`, `pre-commit`).
 
@@ -107,17 +109,18 @@ Corre el scraper de forma programada (`cron`, todos los días a las 9am UTC) y t
 
 Antes de hacer push, podés validar que los workflows van a pasar corriendo los mismos chequeos localmente:
 
-\`\`\`bash
+```bash
 ruff check .              # equivalente a lint.yml
 ruff format --check .     # equivalente a la segunda parte de lint.yml
 pytest tests/             # equivalente a tests.yml
-\`\`\`
+```
 
 También podés usar [`act`](https://github.com/nektos/act) para correr los workflows completos de GitHub Actions en tu máquina con Docker:
-\`\`\`bash
+
+```bash
 act -j lint
 act -j test
-\`\`\`
+```
 
 ## Próximas mejoras
 
@@ -125,7 +128,3 @@ act -j test
 - [ ] Configuración vía archivo `.env` o `config.yaml`
 - [ ] Logging estructurado
 - [ ] Notificaciones (email/Slack) cuando el scraping automatizado encuentra nuevas ofertas
-
-## Licencia
-
-MIT
